@@ -3,21 +3,21 @@ pipeline {
     stages {
         // stage('Clone repository') {
         //     steps {
-        //         checkout([[$class: 'GitSCM',
+        //         checkout([$class: 'GitSCM',
         //         branches: [[name: '*/main']],
-        //         userRemoteConfigs: [[url: 'https://github.com/Shachi-23/PES2UG22CS514_Jenkins.git']]
+        //         userRemoteConfigs: [[url: 'https://github.com/Shachi-23/Jenkins.git']]
         //         ])
         //     }
         // }
         stage('Build') {
             steps {
-                build 'PES2UG19CS514-1'
+                build 'PES2UG22CS514-1'
                 sh 'g++ main.cpp -o output'
             }
         }
         stage('Test') {
             steps {
-                sh './output'
+                sh 'output.exe'
             }
         }
         stage('Deploy') {
@@ -29,6 +29,6 @@ pipeline {
     post {
         failure {
             error 'Pipeline failed'
-        }
-    }
+        }
+    }
 }
